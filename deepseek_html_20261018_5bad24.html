@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎃 CÂU HỎI BÁ KHÍ TRÊN TỪNG HẠT BÍ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BACKGROUND HOẠT HÌNH 2D -->
+  <div class="scene" aria-hidden="true">
+    <div class="sky-layer sky-top"></div>
+    <div class="sky-layer sky-mid"></div>
+    <div class="sky-layer sky-bottom"></div>
+
+    <div class="sun-wrap">
+      <div class="sun-rays"></div>
+      <div class="sun-core"></div>
+      <div class="sun-face">😊</div>
+    </div>
+
+    <div class="cloud-layer cloud-far">
+      <div class="cloud c-far-1"></div>
+      <div class="cloud c-far-2"></div>
+    </div>
+    <div class="cloud-layer cloud-mid">
+      <div class="cloud c-mid-1"></div>
+      <div class="cloud c-mid-2"></div>
+      <div class="cloud c-mid-3"></div>
+    </div>
+
+    <div class="hills hills-back"></div>
+    <div class="hills hills-mid"></div>
+    <div class="hills hills-front"></div>
+
+    <div class="trees">
+      <div class="tree"><div class="tree-crown"></div><div class="tree-trunk"></div></div>
+      <div class="tree tree-tall"><div class="tree-crown"></div><div class="tree-trunk"></div></div>
+    </div>
+
+    <div class="flower-bush fb1"><span>🌼</span><span>🌷</span></div>
+    <div class="flower-bush fb2"><span>🌻</span><span>🌼</span></div>
+
+    <div class="petals" id="petals"></div>
+  </div>
+
+  <!-- GAME WRAPPER -->
+  <div class="game-wrapper">
+
+    <!-- NPC USAGI (CHIIKAWA) -->
+    <div class="npc-area">
+      <div class="usagi-wrapper">
+        <svg class="usagi-svg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="150" cy="305" rx="65" ry="12" fill="rgba(0,0,0,0.1)"/>
+          <g class="usagi-group">
+            <path d="M 95 120 C 70 40, 80 10, 100 5 C 115 0, 125 30, 120 120 Z" fill="#FFE066" stroke="#1A1A1A" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M 205 120 C 230 40, 220 10, 200 5 C 185 0, 175 30, 180 120 Z" fill="#FFE066" stroke="#1A1A1A" stroke-width="4" stroke-linejoin="round"/>
+            <ellipse cx="150" cy="210" rx="75" ry="85" fill="#FFE066" stroke="#1A1A1A" stroke-width="4"/>
+            <ellipse cx="110" cy="280" rx="18" ry="12" fill="#FFE066" stroke="#1A1A1A" stroke-width="4"/>
+            <ellipse cx="190" cy="280" rx="18" ry="12" fill="#FFE066" stroke="#1A1A1A" stroke-width="4"/>
+            <circle cx="220" cy="250" r="22" fill="#FFFFFF" stroke="#1A1A1A" stroke-width="4"/>
+            <path d="M 80 200 Q 55 220, 70 240" fill="none" stroke="#1A1A1A" stroke-width="20" stroke-linecap="round"/>
+            <path d="M 80 200 Q 55 220, 70 240" fill="none" stroke="#FFE066" stroke-width="12" stroke-linecap="round"/>
+            <path d="M 220 200 Q 245 220, 230 240" fill="none" stroke="#1A1A1A" stroke-width="20" stroke-linecap="round"/>
+            <path d="M 220 200 Q 245 220, 230 240" fill="none" stroke="#FFE066" stroke-width="12" stroke-linecap="round"/>
+            <ellipse cx="150" cy="140" rx="80" ry="75" fill="#FFE066" stroke="#1A1A1A" stroke-width="4"/>
+            <ellipse cx="115" cy="135" rx="14" ry="18" fill="#1A1A1A"/>
+            <ellipse cx="110" cy="128" rx="4" ry="5" fill="#FFF"/>
+            <ellipse cx="185" cy="135" rx="14" ry="18" fill="#1A1A1A"/>
+            <ellipse cx="180" cy="128" rx="4" ry="5" fill="#FFF"/>
+            <ellipse cx="90" cy="160" rx="10" ry="6" fill="rgba(255,150,150,0.4)"/>
+            <ellipse cx="210" cy="160" rx="10" ry="6" fill="rgba(255,150,150,0.4)"/>
+            <path d="M 135 165 Q 142 175, 150 165 Q 158 175, 165 165" fill="none" stroke="#1A1A1A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+        </svg>
+      </div>
+      <div class="speech-bubble" id="speech">Ura! Cùng chơi quiz nhé! 🐰</div>
+      <div class="speaking-indicator hidden" id="speakingIndicator"><span></span><span></span><span></span></div>
+    </div>
+
+    <!-- QUIZ AREA -->
+    <div class="quiz-area" id="quizArea">
+      <div class="header-bar">
+        <div class="title">
+          <span class="title-icon">🎃</span>
+          CÂU HỎI BÁ KHÍ TRÊN TỪNG HẠT BÍ
+        </div>
+        <div class="header-right">
+          <div class="combo-box hidden" id="comboBox">🔥 COMBO <span id="comboCount">2</span></div>
+          <div class="score-box"><span class="score-icon">⭐</span> Điểm: <span id="score">0</span></div>
+          <button class="sound-btn" id="soundBtn" title="Bật/tắt âm thanh">🔊</button>
+          <button class="voice-btn" id="voiceBtn" title="Bật/tắt giọng đọc">🗣️</button>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <span class="progress-text" id="progressText">1 / 20</span>
+      </div>
+
+      <div class="question-card">
+        <span class="question-type" id="qType">CÂU HỎI</span>
+        <div class="question-text" id="qText">Đang tải câu hỏi...</div>
+        <button class="speak-btn" id="speakBtn" title="Đọc lại câu hỏi">🔊 Đọc lại</button>
+        <div class="answers" id="answers"></div>
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+      <button class="next-btn" id="nextBtn" disabled>Câu tiếp theo →</button>
+    </div>
+
+    <!-- END SCREEN -->
+    <div class="end-screen hidden" id="endScreen">
+      <div class="end-emoji">🎉</div>
+      <div class="end-title">HOÀN THÀNH!</div>
+      <div class="end-score" id="finalScore"></div>
+      <button class="restart-btn" onclick="restartGame()">🔄 Chơi lại</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
