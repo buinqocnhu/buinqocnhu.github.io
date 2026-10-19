@@ -1,6 +1,6 @@
-// ====== 36 CÂU HỎI SIÊU KHÓ: TÂM LÝ HỌC, KỸ NĂNG MỀM & TÌNH HUỐNG THỰC TẾ ======
+// ====== 36 CÂU HỎI SIÊU KHÓ ======
 const QUESTIONS = [
-  // --- NHÓM 1: TÂM LÝ HỌC VÀ NHẬN THỨC BẢN THÂN ---
+  // NHÓM 1: TÂM LÝ HỌC VÀ NHẬN THỨC BẢN THÂN
   { type: 'mc', q: 'Theo mô hình "Cửa sổ Johari", vùng "Mù" (Blind Spot) đại diện cho điều gì và làm sao để thu hẹp nó?', options: ['Điều người khác biết về ta nhưng ta không biết; thu hẹp bằng cách lắng nghe phản hồi', 'Điều cả ta và người khác đều không biết; thu hẹp bằng cách tự suy ngẫm', 'Bí mật của bản thân; thu hẹp bằng cách chia sẻ với người khác', 'Điều ta biết về bản thân; thu hẹp bằng cách che giấu cảm xúc'], correct: 0 },
   { type: 'mc', q: 'Hiện tượng "Trì hoãn" (Procrastination) thường xuất phát sâu xa từ cơ chế phòng vệ tâm lý nào?', options: ['Nỗi sợ thất bại và sự lo âu quá mức về kết quả', 'Sự thiếu hụt kiến thức chuyên môn', 'Do tính cách hướng nội bẩm sinh', 'Do thiếu dụng cụ học tập'], correct: 0 },
   { type: 'mc', q: 'Phương pháp "Tái cấu trúc nhận thức" (Cognitive Reframing) được áp dụng hiệu quả nhất khi nào?', options: ['Khi thay đổi góc nhìn tiêu cực thành góc nhìn khách quan, tích cực hơn', 'Khi kìm nén và phớt lờ cảm xúc tiêu cực', 'Khi đổ lỗi cho hoàn cảnh bên ngoài', 'Khi tránh né tình huống gây ra cảm xúc đó'], correct: 0 },
@@ -8,7 +8,7 @@ const QUESTIONS = [
   { type: 'mc', q: 'Để duy trì động lực học tập bền vững, lý thuyết "Động lực nội tại" (Intrinsic Motivation) khuyên chúng ta nên làm gì?', options: ['Tập trung vào niềm vui và ý nghĩa của việc học thay vì chỉ phần thưởng bên ngoài', 'Chỉ học khi có phần thưởng vật chất', 'Học để đối phó với kỳ thi', 'So sánh điểm số với bạn bè'], correct: 0 },
   { type: 'mc', q: 'Hội chứng "Kẻ mạo danh" (Impostor Syndrome) là gì?', options: ['Cảm giác bản thân không xứng đáng với thành công dù đã nỗ lực thực sự', 'Việc thích giả làm người khác để trục lợi', 'Sự tự tin thái quá vào năng lực bản thân', 'Thói quen đổ lỗi cho người khác khi thất bại'], correct: 0 },
 
-  // --- NHÓM 2: KỸ NĂNG MỀM VÀ GIAO TIẾP ---
+  // NHÓM 2: KỸ NĂNG MỀM VÀ GIAO TIẾP
   { type: 'mc', q: 'Trong giao tiếp, "Lắng nghe chủ động" (Active Listening) khác với nghe thông thường ở điểm cốt lõi nào?', options: ['Tập trung hiểu thông điệp, phản hồi bằng ngôn ngữ cơ thể và đặt câu hỏi làm rõ', 'Chỉ nghe những gì mình muốn nghe', 'Vừa nghe vừa chuẩn bị câu trả lời để phản bác', 'Im lặng tuyệt đối không phản hồi'], correct: 0 },
   { type: 'mc', q: 'Khi nhận được lời phê bình gay gắt từ giáo viên, phản ứng nào thể hiện "Tư duy phản biện" (Critical Thinking) tốt nhất?', options: ['Phân tích xem lời phê bình có đúng không, tìm điểm hợp lý để sửa đổi', 'Bực tức và cho rằng giáo viên thiên vị', 'Chấp nhận mọi lời phê bình mà không cần suy nghĩ', 'Kể xấu giáo viên với bạn bè'], correct: 0 },
   { type: 'mc', q: 'Kỹ thuật "Phân tích SWOT" giúp cá nhân làm rõ điều gì khi đối mặt với quyết định khó khăn?', options: ['Điểm mạnh, điểm yếu, cơ hội và thách thức của bản thân', 'Cách để đánh bại đối thủ cạnh tranh', 'Cách để trốn tránh trách nhiệm', 'Cách để có được lợi ích ngắn hạn'], correct: 0 },
@@ -16,26 +16,26 @@ const QUESTIONS = [
   { type: 'mc', q: 'Trong xung đột nhóm, chiến lược "Win-Win" (Hợp tác) đòi hỏi điều gì?', options: ['Cả hai bên cùng nhượng bộ và tìm giải pháp tối ưu cho cả hai', 'Một bên phải thắng và một bên phải thua', 'Cả hai bên đều từ bỏ mục tiêu ban đầu', 'Bên thứ ba đứng ra giải quyết thay'], correct: 0 },
   { type: 'mc', q: 'Kỹ thuật "Sandwich Feedback" (Phản hồi kẹp) thường được dùng để làm gì?', options: ['Bắt đầu bằng lời khen, đưa ra lời phê bình, kết thúc bằng lời động viên', 'Chỉ đưa ra lời chê bai để người khác sửa đổi', 'Liên tục khen ngợi để tránh làm mất lòng', 'Nói giảm nói tránh để che giấu sự thật'], correct: 0 },
 
-  // --- NHÓM 3: QUẢN LÝ THỜI GIAN VÀ MỤC TIÊU ---
+  // NHÓM 3: QUẢN LÝ THỜI GIAN VÀ MỤC TIÊU
   { type: 'mc', q: 'Ma trận Eisenhower phân loại công việc theo 2 tiêu chí nào để quản lý thời gian?', options: ['Mức độ Khẩn cấp và Mức độ Quan trọng', 'Mức độ Khó và Mức độ Dễ', 'Thời gian ngắn và Thời gian dài', 'Công việc cá nhân và Công việc nhóm'], correct: 0 },
   { type: 'mc', q: 'Theo nguyên tắc SMART, tiêu chí "Relevant" (Thực tế/Liên quan) yêu cầu mục tiêu phải như thế nào?', options: ['Phù hợp với định hướng giá trị và mục tiêu dài hạn của bản thân', 'Có thể đo lường bằng con số cụ thể', 'Phải hoàn thành trong thời gian ngắn nhất', 'Do người khác đặt ra và áp đặt'], correct: 0 },
   { type: 'mc', q: 'Nguyên tắc "Pomodoro" trong quản lý thời gian hoạt động dựa trên cơ chế nào?', options: ['Làm việc tập trung cao độ trong 25 phút và nghỉ ngắn 5 phút', 'Làm việc liên tục 4 tiếng không nghỉ', 'Chỉ làm việc khi có hứng thú', 'Vừa làm việc vừa giải trí'], correct: 0 },
   { type: 'mc', q: 'Quy tắc "2 phút" (2-Minute Rule) trong quản lý công việc khuyên bạn làm gì?', options: ['Nếu một việc mất ít hơn 2 phút, hãy làm nó ngay lập tức', 'Chỉ dành 2 phút để lập kế hoạch mỗi ngày', 'Nghỉ giải lao 2 phút sau mỗi giờ làm việc', 'Dành 2 phút cuối ngày để đánh giá bản thân'], correct: 0 },
   { type: 'mc', q: 'Khái niệm "Deep Work" (Làm việc sâu) của Cal Newport nhấn mạnh điều gì?', options: ['Trạng thái tập trung không bị xao nhãng vào các nhiệm vụ đòi hỏi nhận thức cao', 'Làm nhiều việc cùng lúc để tăng năng suất', 'Làm việc xuyên đêm để hoàn thành deadline', 'Chỉ làm những việc dễ và nhanh'], correct: 0 },
 
-  // --- NHÓM 4: TÌNH HUỐNG THỰC TẾ (TRẮC NGHIỆM) ---
+  // NHÓM 4: TÌNH HUỐNG THỰC TẾ
   { type: 'mc', q: 'Bạn được giao thuyết trình nhóm nhưng một thành viên không chịu làm việc. Bạn nên xử lý thế nào?', options: ['Nói chuyện riêng để tìm hiểu nguyên nhân và phân chia lại công việc hợp lý', 'Làm hết phần việc của bạn đó để nhóm kịp tiến độ', 'Mách giáo viên ngay lập tức mà không trao đổi', 'Bỏ mặc và để trống phần của bạn đó trong bài'], correct: 0 },
   { type: 'mc', q: 'Bạn nhận được một khoản tiền nhỏ. Quyết định nào thể hiện kế hoạch tài chính cá nhân thông minh?', options: ['Trích một phần tiết kiệm, một phần mua sách học tập, một phần giải trí hợp lý', 'Mua ngay món đồ yêu thích mà không cần suy nghĩ', 'Cho bạn bè vay toàn bộ số tiền', 'Giữ trong két sắt và không dùng đến'], correct: 0 },
   { type: 'mc', q: 'Khi cảm thấy căng thẳng tột độ trước kỳ thi, cách ứng phó nào sau đây là "thích ứng" (Adaptive) nhất?', options: ['Thực hành hít thở sâu, chia nhỏ bài học và duy trì giấc ngủ đủ', 'Cày xuyên đêm và bỏ ăn để học', 'Uống nhiều cà phê và thuốc an thần', 'Bỏ thi vì quá sợ hãi'], correct: 0 },
   { type: 'mc', q: 'Trong một buổi tranh luận, đối phương đưa ra dẫn chứng bạn cho là sai. Bạn nên làm gì?', options: ['Đặt câu hỏi phản biện để làm rõ nguồn gốc và tính xác thực của dẫn chứng', 'Cười nhạo và bảo họ sai hoàn toàn', 'Im lặng và không tranh luận nữa', 'Đồng ý cho xong chuyện dù biết họ sai'], correct: 0 },
   { type: 'mc', q: 'Phát hiện bạn thân nói xấu mình sau lưng, hành động nào thể hiện sự trưởng thành cảm xúc?', options: ['Bình tĩnh gặp gỡ, thẳng thắn hỏi lý do và lắng nghe góc nhìn của họ', 'Lập tức cắt đứt quan hệ và kể xấu lại họ', 'Đăng trạng thái ẩn ý trên mạng xã hội', 'Nhờ người khác đánh họ'], correct: 0 },
 
-  // --- NHÓM 5: KẾ HOẠCH TÀI CHÍNH (TỪ ẢNH) ---
+  // NHÓM 5: KẾ HOẠCH TÀI CHÍNH (TỪ ẢNH)
   { type: 'mc', q: 'Kế hoạch tài chính cá nhân là gì?', options: ['Bản dự toán các khoản đầu tư rủi ro để làm giàu nhanh chóng', 'Bản kế hoạch chi tiêu về thu nhập, chi tiêu, tiết kiệm & đầu tư nhằm đạt mục tiêu tài chính', 'Bảng kê khai tài sản cố định để rập thuế cho nhà nước', 'Sổ theo dõi các khoản nợ phải trả cho ngân hàng hàng tháng'], correct: 1 },
   { type: 'mc', q: 'Có mấy loại kế hoạch tài chính cá nhân?', options: ['2', '3', '5', '8'], correct: 1 },
   { type: 'mc', q: 'Phương pháp nào sau đây là cách thực hiện kế hoạch tài chính cá nhân tối ưu nhất?', options: ['Bỏ tất cả tiền vào heo đất để giữ an toàn tuyệt đối tài sản', 'Không cần tiết kiệm, cứ mang đi mua những thứ mình thích để thỏa mãn bản thân', 'Phân bổ tiền hợp lý, chi tiêu tiết kiệm, gửi ngân hàng & đầu tư an toàn', 'Đưa hết tiền cho phụ huynh giữ, lớn rồi sẽ lấy lại'], correct: 2 },
 
-  // --- NHÓM 6: ĐÚNG / SAI (PHÂN TÍCH SÂU) ---
+  // NHÓM 6: ĐÚNG / SAI (PHÂN TÍCH SÂU)
   { type: 'tf', q: 'Việc kìm nén hoàn toàn cảm xúc tiêu cực luôn là cách quản lý cảm xúc tốt nhất.', options: ['Đúng', 'Sai'], correct: 1 },
   { type: 'tf', q: 'Một mục tiêu không có thời hạn cụ thể sẽ giúp giảm áp lực và tăng hiệu quả rèn luyện bản thân.', options: ['Đúng', 'Sai'], correct: 1 },
   { type: 'tf', q: 'Trong phản hồi xây dựng, việc đưa ra giải pháp cụ thể quan trọng hơn việc chỉ trích tính cách người khác.', options: ['Đúng', 'Sai'], correct: 0 },
@@ -276,7 +276,9 @@ function loadQuestion() {
   shuffledOptions = shuffled.map(o => o.text);
   correctIndexShuffled = shuffled.findIndex(o => o.isCorrect);
 
-  $('qType').textContent = q.type === 'mc' ? 'TRẮC NGHIỆM" : "ĐÚNG / SAI';
+  // SỬA LỖI DẤU NGOẶC KÉP Ở DÒNG NÀY
+  $('qType').textContent = q.type === 'mc' ? 'TRẮC NGHIỆM' : 'ĐÚNG / SAI'; 
+  
   $('qText').textContent = q.q;
   $('feedback').textContent = '';
   $('feedback').className = 'feedback';
