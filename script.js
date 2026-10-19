@@ -1,178 +1,208 @@
-// ====== 20 CÂU HỎI NÂNG CAO: CHỦ ĐỀ 3 - RÈN LUYỆN BẢN THÂN (HĐTN 10 - KNTT) ======
+// ====== 20 CÂU HỎI: 10 CÂU TỪ ẢNH + 10 CÂU KHÓ MỞ RỘNG ======
 const QUESTIONS = [
-  // Trắc nghiệm 4 đáp án (10 câu - Phân tích & Vận dụng)
+  // 10 CÂU TỪ ẢNH CỦA BẠN
   { 
     type: 'mc', 
-    q: 'Phản hồi mang tính xây dựng khác với lời chỉ trích ở điểm cốt lõi nào?', 
+    q: 'Thế nào là người có trách nhiệm?', 
     options: [
-      'Tập trung vào hành vi cụ thể và đưa ra giải pháp cải thiện', 
-      'Luôn khen ngợi để tránh làm tổn thương người khác', 
-      'Chỉ ra lỗi sai mà không cần giải thích lý do', 
-      'Đưa ra nhận xét chung chung về tính cách con người'
+      'Là người hoàn thành công việc khi có sự giám sát, kiểm tra của người khác',
+      'Là người có ý thức rõ về nghĩa vụ với việc làm & hành động của bản thân, chủ động hoàn thành công việc & dám đối mặt với lợi ích của bản thân',
+      'Là người chỉ quan tâm đến lợi ích cá nhân mà không quan tâm đến tập thể',
+      'Là người dám đối mặt với khó khăn, gian khổ & không ngại bước tiếp để đạt được thành công, mơ ước, mục tiêu mình đã đặt ra'
+    ], 
+    correct: 1 
+  },
+  { 
+    type: 'mc', 
+    q: 'Đâu là biểu hiện của người có trách nhiệm?', 
+    options: ['Lười biếng', 'Nhút nhát', 'Tự giác', 'Thụ động'], 
+    correct: 2 
+  },
+  { 
+    type: 'mc', 
+    q: 'Trong các câu ca dao, tục ngữ sau đây đâu là câu thể hiện tinh thần trách nhiệm?', 
+    options: [
+      'Có gan ăn cướp, có gan chịu đòn',
+      'Lá lành đùm lá rách',
+      'Liều ăn nhiều',
+      'Có gan làm giàu, có gan làm khó'
     ], 
     correct: 0 
   },
   { 
     type: 'mc', 
-    q: 'Theo nguyên tắc SMART, một mục tiêu được đánh giá là "Khả thi" (Achievable) khi nào?', 
+    q: 'Phẩm chất nào sau đây khác với những phẩm chất còn lại?', 
+    options: ['Sự tự chủ', 'Lòng tự trọng', 'Ý chí vượt khó', 'Lòng trắc ẩn'], 
+    correct: 3 
+  },
+  { 
+    type: 'mc', 
+    q: 'Cách nào sau đây giúp rèn luyện tư duy phản biện?', 
     options: [
-      'Khi mục tiêu đó phù hợp với nguồn lực và năng lực hiện có của bản thân', 
-      'Khi mục tiêu đó do người khác áp đặt và yêu cầu phải hoàn thành', 
-      'Khi mục tiêu đó mang tính thử thách cực cao, bất chấp khó khăn', 
-      'Khi mục tiêu đó không giới hạn thời gian thực hiện'
+      'Luôn tin tưởng vào thông tin từ những người có ảnh hưởng lớn hoặc bề trên',
+      'Đặt câu hỏi nghi vấn, đa chiều & chủ động kiểm tra tính chính xác của thông tin trước khi xác nhận',
+      'Nhanh chóng đưa ra kết luận dựa trên cảm xúc cá nhân & ấn tượng ban đầu',
+      'Chỉ tiếp nhận những ý kiến cùng góc nhìn & tránh xa các quan điểm trái chiều'
     ], 
+    correct: 1 
+  },
+  { 
+    type: 'mc', 
+    q: 'Kế hoạch tài chính cá nhân là gì?', 
+    options: [
+      'Bản dự toán các khoản đầu tư rủi ro để làm giàu nhanh chóng',
+      'Bản kế hoạch chi tiêu về thu nhập, chi tiêu, tiết kiệm & đầu tư nhằm đạt mục tiêu tài chính',
+      'Bảng kê khai tài sản cố định để rập thuế cho nhà nước',
+      'Sổ theo dõi các khoản nợ phải trả cho ngân hàng hàng tháng'
+    ], 
+    correct: 1 
+  },
+  { 
+    type: 'mc', 
+    q: 'Có mấy loại kế hoạch tài chính cá nhân?', 
+    options: ['2', '3', '5', '8'], 
+    correct: 1 
+  },
+  { 
+    type: 'mc', 
+    q: 'Phương pháp nào sau đây là cách thực hiện kế hoạch tài chính cá nhân tối ưu nhất?', 
+    options: [
+      'Bỏ tất cả tiền vào heo đất để giữ an toàn tuyệt đối tài sản',
+      'Không cần tiết kiệm, cứ mang đi mua những thứ mình thích để thỏa mãn bản thân',
+      'Phân bổ tiền hợp lý, chi tiêu tiết kiệm, gửi ngân hàng & đầu tư an toàn',
+      'Đưa hết tiền cho phụ huynh giữ, lớn rồi sẽ lấy lại'
+    ], 
+    correct: 2 
+  },
+  { 
+    type: 'mc', 
+    q: 'Đặt ra các câu hỏi "Như thế nào? Tại sao? Khi nào? Ở đâu? Với ai? Cái gì?" là biểu hiện của người...', 
+    options: ['Có tư duy phản biện', 'Có trách nhiệm', 'Có ý chí vượt khó', 'Có lòng tự trọng'], 
     correct: 0 
   },
   { 
     type: 'mc', 
-    q: 'Hiện tượng "trì hoãn" (procrastination) thường xuất phát sâu xa từ nguyên nhân tâm lý nào?', 
+    q: 'Cho tình huống: "Anh M bị thua lỗ toàn bộ số tiền tiết kiệm & vốn vay do đầu tư kinh doanh thất bại. Thay vì đổ lỗi cho hoàn cảnh hay trốn tránh nợ nần, anh M chủ động làm việc thêm ca tối để trả nợ dần, đồng thời giữ vững nguyên tắc không vay mượn bất chính." Hành động của anh M thể hiện rõ nhất phẩm chất nào sau đây?', 
     options: [
-      'Nỗi sợ thất bại hoặc sự lo lắng quá mức về kết quả', 
-      'Sự thiếu hiểu biết về kiến thức chuyên môn', 
-      'Thói quen thích làm việc vào ban đêm', 
-      'Do thiếu dụng cụ học tập hỗ trợ'
-    ], 
-    correct: 0 
-  },
-  { 
-    type: 'mc', 
-    q: 'Trong mô hình "Cửa sổ Johari", vùng "Mù" (Blind Spot) đại diện cho điều gì?', 
-    options: [
-      'Những đặc điểm về bản thân mà người khác thấy nhưng chính ta không nhận ra', 
-      'Những điều cả bản thân và người khác đều không biết', 
-      'Những điều ta biết rõ về bản thân và công khai với mọi người', 
-      'Những bí mật cá nhân ta giấu kín trong lòng'
-    ], 
-    correct: 0 
-  },
-  { 
-    type: 'mc', 
-    q: 'Để chuyển hóa cảm xúc tiêu cực một cách hiệu quả, phương pháp "tái cấu trúc nhận thức" (Cognitive Reframing) yêu cầu học sinh làm gì?', 
-    options: [
-      'Thay đổi cách nhìn nhận vấn đề theo hướng tích cực và khách quan hơn', 
-      'Dồn nén cảm xúc đó vào sâu bên trong', 
-      'Tìm cách đổ lỗi cho hoàn cảnh bên ngoài', 
-      'Tránh né hoàn toàn các tình huống gây ra cảm xúc đó'
-    ], 
-    correct: 0 
-  },
-  { 
-    type: 'mc', 
-    q: 'Hành vi nào sau đây thể hiện sự "lệch chuẩn" trong kỹ năng tự đánh giá bản thân?', 
-    options: [
-      'Phóng đại điểm mạnh và phủ nhận hoàn toàn điểm yếu của bản thân', 
-      'Xin ý kiến nhận xét từ thầy cô để đối chiếu', 
-      'Ghi chép lại các lỗi sai để rút kinh nghiệm', 
-      'Đặt mục tiêu nhỏ và tăng dần độ khó'
-    ], 
-    correct: 0 
-  },
-  { 
-    type: 'mc', 
-    q: 'Theo nghiên cứu tâm lý, để nuôi dưỡng một thói quen mới bền vững, một người cần duy trì sự kiên trì trong khoảng thời gian trung bình là bao lâu?', 
-    options: [
-      'Khoảng 66 ngày (từ 2 đến 8 tháng tùy độ phức tạp)', 
-      'Chỉ cần 3 ngày liên tục', 
-      'Đúng 21 ngày theo mọi trường hợp', 
-      'Trong vòng 1 tuần là đủ'
-    ], 
-    correct: 0 
-  },
-  { 
-    type: 'mc', 
-    q: 'Khi đối mặt với một xung đột quan điểm trong nhóm học tập, chiến lược nào sau đây thể hiện sự trưởng thành về mặt cảm xúc?', 
-    options: [
-      'Lắng nghe, tìm điểm chung và thương lượng để cùng có lợi', 
-      'Bảo vệ quan điểm của mình bằng mọi giá', 
-      'Im lặng và làm theo ý người khác để tránh cãi vã', 
-      'Rời khỏi nhóm và làm việc một mình'
-    ], 
-    correct: 0 
-  },
-  { 
-    type: 'mc', 
-    q: 'Khái niệm "Lòng tự trọng lành mạnh" (Healthy Self-esteem) được thể hiện rõ nhất qua hành vi nào?', 
-    options: [
-      'Chấp nhận bản thân có khuyết điểm nhưng vẫn nỗ lực phát triển', 
-      'Luôn cho rằng mình giỏi hơn người khác', 
-      'Phụ thuộc hoàn toàn vào lời khen của người xung quanh', 
-      'Tự cô lập bản thân để không bị ảnh hưởng'
-    ], 
-    correct: 0 
-  },
-  { 
-    type: 'mc', 
-    q: 'Yếu tố then chốt giúp học sinh lớp 10 quản lý thời gian hiệu quả giữa học tập và ngoại khóa là gì?', 
-    options: [
-      'Xác định rõ ưu tiên và phân bổ thời gian theo ma trận khẩn cấp/quan trọng', 
-      'Dành toàn bộ thời gian cho việc học, cắt bỏ ngoại khóa', 
-      'Làm việc ngẫu hứng tùy theo cảm xúc từng ngày', 
-      'Chỉ tập trung làm các việc dễ trước'
+      'Tính trách nhiệm, sự tự chủ, lòng tự trọng & ý chí vượt khó',
+      'Sự may mắn, thói quen ỷ lại vào tư duy mạo hiểm',
+      'Sự tự mãn, lòng kiêu ngạo & lối sống ích kỷ',
+      'Tính ba hoa, sự trốn tránh & thái độ buông xuôi trước khó khăn'
     ], 
     correct: 0 
   },
 
-  // Đúng / Sai (10 câu - Phân tích & Đánh giá)
+  // 10 CÂU HỎI KHÓ MỞ RỘNG (Tâm lý học & Kỹ năng)
   { 
-    type: 'tf', 
-    q: 'Việc kìm nén hoàn toàn cảm xúc tiêu cực luôn là cách quản lý cảm xúc tốt nhất.', 
-    options: ['Đúng', 'Sai'], 
-    correct: 1 
-  },
-  { 
-    type: 'tf', 
-    q: 'Khi tự đánh giá, việc so sánh bản thân với người khác giỏi hơn chỉ mang lại động lực, không bao giờ gây ra tác dụng phụ tiêu cực.', 
-    options: ['Đúng', 'Sai'], 
-    correct: 1 
-  },
-  { 
-    type: 'tf', 
-    q: 'Để nhận được phản hồi có chất lượng, bản thân cần đặt câu hỏi cụ thể thay vì chờ người khác đánh giá chung chung.', 
-    options: ['Đúng', 'Sai'], 
+    type: 'mc', 
+    q: 'Theo mô hình "Cửa sổ Johari", vùng "Mù" (Blind Spot) đại diện cho điều gì và làm sao để thu hẹp nó?', 
+    options: [
+      'Điều người khác biết về ta nhưng ta không biết; thu hẹp bằng cách lắng nghe phản hồi',
+      'Điều cả ta và người khác đều không biết; thu hẹp bằng cách tự suy ngẫm',
+      'Bí mật của bản thân; thu hẹp bằng cách chia sẻ với người khác',
+      'Điều ta biết về bản thân; thu hẹp bằng cách che giấu cảm xúc'
+    ], 
     correct: 0 
   },
   { 
-    type: 'tf', 
-    q: 'Việc thất bại là một trải nghiệm cần thiết để học sinh THPT đánh thức tư duy phản biện và bài học kinh nghiệm.', 
-    options: ['Đúng', 'Sai'], 
+    type: 'mc', 
+    q: 'Theo nguyên tắc SMART, tiêu chí "Relevant" (Thực tế/Liên quan) yêu cầu mục tiêu phải như thế nào?', 
+    options: [
+      'Phù hợp với định hướng giá trị và mục tiêu dài hạn của bản thân',
+      'Có thể đo lường bằng con số cụ thể',
+      'Phải hoàn thành trong thời gian ngắn nhất',
+      'Do người khác đặt ra và áp đặt'
+    ], 
     correct: 0 
   },
   { 
-    type: 'tf', 
-    q: 'Một mục tiêu không có thời hạn cụ thể sẽ giúp giảm áp lực và tăng hiệu quả rèn luyện bản thân.', 
-    options: ['Đúng', 'Sai'], 
-    correct: 1 
-  },
-  { 
-    type: 'tf', 
-    q: 'Chỉ những người có điểm số thấp mới cần đến kỹ năng tự đánh giá bản thân, người có điểm cao không cần.', 
-    options: ['Đúng', 'Sai'], 
-    correct: 1 
-  },
-  { 
-    type: 'tf', 
-    q: 'Xây dựng thói quen tích cực nên bắt đầu bằng những hành động nhỏ, dễ thực hiện và tăng dần theo thời gian.', 
-    options: ['Đúng', 'Sai'], 
+    type: 'mc', 
+    q: 'Hiện tượng "Trì hoãn" (Procrastination) thường xuất phát sâu xa từ cơ chế phòng vệ tâm lý nào?', 
+    options: [
+      'Nỗi sợ thất bại và sự lo âu quá mức về kết quả',
+      'Sự thiếu hụt kiến thức chuyên môn',
+      'Do tính cách hướng nội bẩm sinh',
+      'Do thiếu dụng cụ học tập'
+    ], 
     correct: 0 
   },
   { 
-    type: 'tf', 
-    q: 'Kỹ năng giao tiếp hiệu quả chỉ bao gồm việc nói lưu loát, không cần chú trọng đến việc lắng nghe.', 
-    options: ['Đúng', 'Sai'], 
-    correct: 1 
-  },
-  { 
-    type: 'tf', 
-    q: 'Chấp nhận sự không hoàn hảo của bản thân là biểu hiện của sự yếu đuối và thiếu nỗ lực phấn đấu.', 
-    options: ['Đúng', 'Sai'], 
-    correct: 1 
-  },
-  { 
-    type: 'tf', 
-    q: 'Trong quá trình rèn luyện bản thân, việc lùi lại một bước để nhìn nhận lại mục tiêu được xem là một chiến lược thông minh.', 
-    options: ['Đúng', 'Sai'], 
+    type: 'mc', 
+    q: 'Phương pháp "Tái cấu trúc nhận thức" (Cognitive Reframing) được áp dụng hiệu quả nhất khi nào?', 
+    options: [
+      'Khi thay đổi góc nhìn tiêu cực thành góc nhìn khách quan, tích cực hơn',
+      'Khi kìm nén và phớt lờ cảm xúc tiêu cực',
+      'Khi đổ lỗi cho hoàn cảnh bên ngoài',
+      'Khi tránh né tình huống gây ra cảm xúc đó'
+    ], 
     correct: 0 
   },
+  { 
+    type: 'mc', 
+    q: 'Trong giao tiếp, "Lắng nghe chủ động" (Active Listening) khác với nghe thông thường ở điểm cốt lõi nào?', 
+    options: [
+      'Tập trung hiểu thông điệp, phản hồi bằng ngôn ngữ cơ thể và đặt câu hỏi làm rõ',
+      'Chỉ nghe những gì mình muốn nghe',
+      'Vừa nghe vừa chuẩn bị câu trả lời để phản bác',
+      'Im lặng tuyệt đối không phản hồi'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Khi nhận được lời phê bình gay gắt từ giáo viên, phản ứng nào thể hiện "Tư duy phản biện" (Critical Thinking) tốt nhất?', 
+    options: [
+      'Phân tích xem lời phê bình có đúng không, tìm điểm hợp lý để sửa đổi',
+      'Bực tức và cho rằng giáo viên thiên vị',
+      'Chấp nhận mọi lời phê bình mà không cần suy nghĩ',
+      'Kể xấu giáo viên với bạn bè'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Ma trận Eisenhower phân loại công việc theo 2 tiêu chí nào để quản lý thời gian?', 
+    options: [
+      'Mức độ Khẩn cấp và Mức độ Quan trọng',
+      'Mức độ Khó và Mức độ Dễ',
+      'Thời gian ngắn và Thời gian dài',
+      'Công việc cá nhân và Công việc nhóm'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Theo tâm lý học, "Lòng tự trọng lành mạnh" (Healthy Self-esteem) được biểu hiện như thế nào?', 
+    options: [
+      'Chấp nhận khuyết điểm, không phụ thuộc vào lời khen, và nỗ lực phát triển',
+      'Luôn cho mình đúng và giỏi hơn người khác',
+      'Cần người khác xác nhận giá trị của mình mỗi ngày',
+      'Không bao giờ thừa nhận mình sai'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Để duy trì động lực học tập bền vững, lý thuyết "Động lực nội tại" (Intrinsic Motivation) khuyên chúng ta nên làm gì?', 
+    options: [
+      'Tập trung vào niềm vui và ý nghĩa của việc học thay vì chỉ phần thưởng bên ngoài',
+      'Chỉ học khi có phần thưởng vật chất',
+      'Học để đối phó với kỳ thi',
+      'So sánh điểm số với bạn bè'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Kỹ thuật "Phân tích SWOT" giúp cá nhân làm rõ điều gì khi đối mặt với quyết định khó khăn?', 
+    options: [
+      'Điểm mạnh, điểm yếu, cơ hội và thách thức của bản thân',
+      'Cách để đánh bại đối thủ cạnh tranh',
+      'Cách để trốn tránh trách nhiệm',
+      'Cách để có được lợi ích ngắn hạn'
+    ], 
+    correct: 0 
+  }
 ];
 
 // ====== CÂU KHEN ======
