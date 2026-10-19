@@ -1,219 +1,570 @@
-/* ==========================================
-   RESET & BASE
-   ========================================== */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Quicksand', 'Segoe UI', sans-serif; }
-html, body { min-height: 100%; }
-body {
-  min-height: 100vh; overflow-x: hidden; position: relative;
-  display: flex; justify-content: center; align-items: center;
-  padding: 30px 20px; background: #fff8e1; 
+// ====== 20 CÂU HỎI NÂNG CAO: RÈN LUYỆN BẢN THÂN (HĐTN 10 - KNTT) ======
+const QUESTIONS = [
+  // 1-5: Trắc nghiệm phân tích tâm lý & kỹ năng
+  { 
+    type: 'mc', 
+    q: 'Theo mô hình "Cửa sổ Johari", vùng "Mù" (Blind Spot) đại diện cho điều gì và làm sao để thu hẹp nó?', 
+    options: [
+      'Điều người khác biết về ta nhưng ta không biết; thu hẹp bằng cách lắng nghe phản hồi', 
+      'Điều cả ta và người khác đều không biết; thu hẹp bằng cách tự suy ngẫm', 
+      'Bí mật của bản thân; thu hẹp bằng cách chia sẻ với người khác', 
+      'Điều ta biết về bản thân; thu hẹp bằng cách che giấu cảm xúc'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Trong nguyên tắc SMART, tiêu chí "Relevant" (Thực tế/Liên quan) yêu cầu mục tiêu phải như thế nào?', 
+    options: [
+      'Phù hợp với định hướng giá trị và mục tiêu dài hạn của bản thân', 
+      'Có thể đo lường bằng con số cụ thể', 
+      'Phải hoàn thành trong thời gian ngắn nhất', 
+      'Do người khác đặt ra và áp đặt'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Hiện tượng "Trì hoãn" (Procrastination) thường xuất phát sâu xa từ cơ chế phòng vệ tâm lý nào?', 
+    options: [
+      'Nỗi sợ thất bại và sự lo âu quá mức về kết quả', 
+      'Sự thiếu hụt kiến thức chuyên môn', 
+      'Do tính cách hướng nội bẩm sinh', 
+      'Do thiếu dụng cụ học tập'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Phương pháp "Tái cấu trúc nhận thức" (Cognitive Reframing) được áp dụng hiệu quả nhất khi nào?', 
+    options: [
+      'Khi thay đổi góc nhìn tiêu cực thành góc nhìn khách quan, tích cực hơn', 
+      'Khi kìm nén và phớt lờ cảm xúc tiêu cực', 
+      'Khi đổ lỗi cho hoàn cảnh bên ngoài', 
+      'Khi tránh né tình huống gây ra cảm xúc đó'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Trong giao tiếp, "Lắng nghe chủ động" (Active Listening) khác với nghe thông thường ở điểm cốt lõi nào?', 
+    options: [
+      'Tập trung hiểu thông điệp, phản hồi bằng ngôn ngữ cơ thể và đặt câu hỏi làm rõ', 
+      'Chỉ nghe những gì mình muốn nghe', 
+      'Vừa nghe vừa chuẩn bị câu trả lời để phản bác', 
+      'Im lặng tuyệt đối không phản hồi'
+    ], 
+    correct: 0 
+  },
+
+  // 6-10: Trắc nghiệm tình huống thực tế
+  { 
+    type: 'mc', 
+    q: 'Khi nhận được lời phê bình gay gắt từ giáo viên, phản ứng nào thể hiện "Tư duy phản biện" (Critical Thinking) tốt nhất?', 
+    options: [
+      'Phân tích xem lời phê bình có đúng không, tìm điểm hợp lý để sửa đổi', 
+      'Bực tức và cho rằng giáo viên thiên vị', 
+      'Chấp nhận mọi lời phê bình mà không cần suy nghĩ', 
+      'Kể xấu giáo viên với bạn bè'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Ma trận Eisenhower (Eisenhower Matrix) phân loại công việc theo 2 tiêu chí nào để quản lý thời gian?', 
+    options: [
+      'Mức độ Khẩn cấp và Mức độ Quan trọng', 
+      'Mức độ Khó và Mức độ Dễ', 
+      'Thời gian ngắn và Thời gian dài', 
+      'Công việc cá nhân và Công việc nhóm'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Theo tâm lý học, "Lòng tự trọng lành mạnh" (Healthy Self-esteem) được biểu hiện như thế nào?', 
+    options: [
+      'Chấp nhận khuyết điểm, không phụ thuộc vào lời khen, và nỗ lực phát triển', 
+      'Luôn cho mình đúng và giỏi hơn người khác', 
+      'Cần người khác xác nhận giá trị của mình mỗi ngày', 
+      'Không bao giờ thừa nhận mình sai'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Để duy trì động lực học tập bền vững, lý thuyết "Động lực nội tại" (Intrinsic Motivation) khuyên chúng ta nên làm gì?', 
+    options: [
+      'Tập trung vào niềm vui và ý nghĩa của việc học thay vì chỉ phần thưởng bên ngoài', 
+      'Chỉ học khi có phần thưởng vật chất', 
+      'Học để đối phó với kỳ thi', 
+      'So sánh điểm số với bạn bè'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Khi đối mặt với một quyết định khó khăn, kỹ thuật "Phân tích SWOT" giúp cá nhân làm rõ điều gì?', 
+    options: [
+      'Điểm mạnh, điểm yếu, cơ hội và thách thức của bản thân', 
+      'Cách để đánh bại đối thủ cạnh tranh', 
+      'Cách để trốn tránh trách nhiệm', 
+      'Cách để có được lợi ích ngắn hạn'
+    ], 
+    correct: 0 
+  },
+
+  // 11-15: Đúng/Sai - Đọc hiểu sâu
+  { 
+    type: 'tf', 
+    q: 'Việc kìm nén hoàn toàn cảm xúc tiêu cực được xem là phương pháp quản lý cảm xúc khoa học nhất.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Một mục tiêu không có thời hạn cụ thể sẽ giúp giảm áp lực và tăng hiệu quả rèn luyện bản thân.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Theo nghiên cứu, một thói quen mới trung bình cần khoảng 21 ngày để hình thành.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Trong phản hồi xây dựng, việc đưa ra giải pháp cụ thể quan trọng hơn việc chỉ trích tính cách người khác.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 0 
+  },
+  { 
+    type: 'tf', 
+    q: 'Sự tự tin thái quá (Overconfidence) không bao giờ gây hại vì nó giúp ta dũng cảm hơn trong học tập.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+
+  // 16-20: Đúng/Sai - Đánh giá quan điểm
+  { 
+    type: 'tf', 
+    q: 'Lắng nghe chủ động (Active Listening) chỉ bao gồm việc nghe bằng tai mà không cần quan sát ngôn ngữ cơ thể.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Thất bại luôn là dấu hiệu cho thấy bản thân thiếu năng lực và không nên cố gắng nữa.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Việc chấp nhận sự không hoàn hảo của bản thân là một bước quan trọng để rèn luyện sự tự tin.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 0 
+  },
+  { 
+    type: 'tf', 
+    q: 'Quản lý thời gian hiệu quả đồng nghĩa với việc làm thật nhiều việc cùng một lúc (Đa nhiệm).', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Kỹ năng tự đánh giá bản thân chỉ cần thiết khi ta gặp thất bại, còn khi thành công thì không cần nhìn lại.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+];
+
+// ====== CÂU KHEN ======
+const PRAISE_PHRASES = [
+  'Ơ kìa, cũng không tệ đâu nhỉ!',
+  'Đúng rồi, nhưng đừng tự mãn nha!',
+  'Cũng được đấy, được 1 câu rồi!',
+  'Bạn vừa lên trình rồi đó hả?',
+  'Đoán mò mà cũng đúng, giỏi ghê!',
+  'Trộm vía, cái đầu cũng có sạn đấy!',
+  'Cố lên, sắp bằng mình rồi!',
+  'Ơ, bạn nói có lý đấy chứ!',
+  'Đúng rồi đó, tự tin lên nào!',
+  'Ồ, không ngờ luôn á nha!'
+];
+
+const COMBO_PHRASES = {
+  2: ['Bạn thật bá đạo!', 'Bá đạo thật sự!', 'Bạn thật bá đạo đó nha!'],
+  3: ['Bá khí trên từng hạt bí!', 'Bá khí trên từng hạt bí!', 'BÁ KHÍ TRÊN TỪNG HẠT BÍ!!!'],
+  4: ['Combo 4! Đỉnh cao muôn thuở!', 'Bốn câu liên tiếp! Siêu sao là đây!', 'Combo 4! Bất khả chiến bại!'],
+  5: ['Combo 5! Bạn là huyền thoại!', 'Năm câu liên tiếp! Vô đối!', 'Combo 5! Không gì cản nổi!'],
+  6: ['Combo 6! Não bạn là siêu máy tính hả?', 'Sáu câu rồi! Xin vía!', 'Combo 6! Bạn chơi game như thánh!'],
+  7: ['Combo 7! Hạt bí nổ tung rồi!', 'Bảy câu! Bá khí ngút trời!', 'Combo 7! Thần thánh phương nào đây?'],
+  8: ['Combo 8! Admin đang xem bạn kìa!', 'Tám câu rồi! Bịp thật sự!', 'Combo 8! Vô địch thiên hạ!'],
+  9: ['Combo 9! Bạn là nỗi ác mộng của câu hỏi!', 'Chín câu! Không còn gì để nói!', 'Combo 9! Siêu bá khí!'],
+  10: ['Combo 10! Bạn hack game à?', 'Mười câu! Huyền thoại sống!', 'COMBO 10! QUÁ BÁ KHÍ!'],
+};
+
+const ENCOURAGE_PHRASES = [
+  'Sai rồi! Thử đáp án khác nhé.', 'Ôi chưa đúng! Chọn lại đi nào.',
+  'Không sao đâu! Thử lại lần nữa nhé.', 'Hơi tiếc! Nhưng bạn chọn lại được mà.',
+  'Chưa đúng rồi! Đừng bỏ cuộc nhé.', 'Sai mất rồi! Bình tĩnh chọn lại nào.',
+];
+
+// ====== TRẠNG THÁI ======
+let currentQ = 0;
+let score = 0;
+let currentQuestions = [];
+let answered = false;
+let shuffledOptions = [];
+let correctIndexShuffled = 0;
+let comboStreak = 0;
+
+let soundEnabled = true;
+let voiceEnabled = true;
+let currentVoice = null;
+
+const $ = id => document.getElementById(id);
+
+// ============================================
+// 🔊 ÂM THANH
+// ============================================
+let audioCtx = null;
+
+function initAudio() {
+  if (!audioCtx) {
+    try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } 
+    catch (e) { console.warn('Không hỗ trợ Web Audio'); }
+  }
+  if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+  return audioCtx;
 }
 
-/* ==========================================
-   BACKGROUND 2D
-   ========================================== */
-.scene { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-.sky-layer { position: absolute; inset: 0; }
-.sky-top { background: linear-gradient(180deg, #fff9c4 0%, #fff8e1 50%, #fff 100%); height: 60%; }
-.sky-mid { top: 40%; height: 35%; background: linear-gradient(180deg, #fff 0%, #e0f7fa 100%); }
-.sky-bottom { top: 70%; height: 30%; background: linear-gradient(180deg, #e0f7fa 0%, #b2ebf2 100%); }
-
-.sun-wrap { position: absolute; top: 6%; right: 10%; width: 160px; height: 160px; display: flex; justify-content: center; align-items: center; }
-.sun-rays {
-  position: absolute; width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(255,230,180,0.55) 0%, rgba(255,230,180,0) 65%);
-  border-radius: 50%; animation: raysPulse 4s ease-in-out infinite;
-}
-@keyframes raysPulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.15); opacity: 1; } }
-.sun-core {
-  position: absolute; width: 100px; height: 100px;
-  background: radial-gradient(circle at 35% 35%, #fff4d6 0%, #ffd96b 55%, #ffb85c 100%);
-  border-radius: 50%; box-shadow: 0 0 40px 15px rgba(255,220,150,0.7), inset -8px -8px 15px rgba(255,160,60,0.3);
-  z-index: 1; animation: sunBob 4s ease-in-out infinite;
-}
-@keyframes sunBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-.sun-face { position: absolute; font-size: 26px; z-index: 2; animation: sunBob 4s ease-in-out infinite; }
-
-.cloud-layer { position: absolute; inset: 0; }
-.cloud { position: absolute; background: #fff; border-radius: 100px; box-shadow: 0 10px 30px rgba(255,200,100,0.15); }
-.cloud::before, .cloud::after { content: ''; position: absolute; background: #fff; border-radius: 50%; }
-.cloud-far .cloud { opacity: 0.6; filter: blur(1px); }
-.c-far-1 { top: 12%; left: -180px; width: 100px; height: 30px; animation: drift 90s linear infinite; }
-.c-far-1::before { width: 45px; height: 45px; top: -22px; left: 15px; }
-.c-far-1::after { width: 55px; height: 55px; top: -25px; right: 15px; }
-.c-far-2 { top: 22%; left: -250px; width: 120px; height: 35px; animation: drift 110s linear infinite; animation-delay: -30s; }
-.c-far-2::before { width: 50px; height: 50px; top: -25px; left: 20px; }
-.c-far-2::after { width: 65px; height: 65px; top: -30px; right: 20px; }
-.c-mid-1 { top: 18%; left: -200px; width: 150px; height: 45px; animation: drift 50s linear infinite; }
-.c-mid-1::before { width: 65px; height: 65px; top: -32px; left: 20px; }
-.c-mid-1::after { width: 85px; height: 85px; top: -42px; right: 20px; }
-.c-mid-2 { top: 35%; left: -350px; width: 190px; height: 55px; animation: drift 70s linear infinite; animation-delay: -20s; }
-.c-mid-2::before { width: 80px; height: 80px; top: -40px; left: 25px; }
-.c-mid-2::after { width: 100px; height: 100px; top: -50px; right: 25px; }
-.c-mid-3 { top: 50%; left: -220px; width: 130px; height: 40px; animation: drift 60s linear infinite; animation-delay: -40s; }
-.c-mid-3::before { width: 60px; height: 60px; top: -30px; left: 18px; }
-.c-mid-3::after { width: 75px; height: 75px; top: -35px; right: 18px; }
-@keyframes drift { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 500px)); } }
-
-.hills { position: absolute; left: -10%; width: 120%; }
-.hills-back { bottom: 20%; height: 240px; background: linear-gradient(180deg, #fff9c4 0%, #ffecb3 100%); border-radius: 50% 50% 0 0 / 100% 100% 0 0; opacity: 0.7; }
-.hills-mid { bottom: 15%; height: 260px; background: linear-gradient(180deg, #c8e6c9 0%, #a5d6a7 100%); border-radius: 50% 50% 0 0 / 100% 100% 0 0; opacity: 0.85; }
-.hills-front { bottom: 0; height: 180px; background: linear-gradient(180deg, #aed581 0%, #7cb342 100%); border-radius: 50% 50% 0 0 / 100% 100% 0 0; opacity: 0.95; z-index: 4; }
-
-.trees { position: absolute; bottom: 25%; left: 0; width: 100%; height: 200px; z-index: 2; }
-.tree { position: absolute; bottom: 0; }
-.tree-crown { width: 60px; height: 60px; background: radial-gradient(circle at 35% 35%, #b8e6b8 0%, #7fc47f 60%, #5aa85a 100%); border-radius: 50%; box-shadow: inset -5px -5px 10px rgba(90,168,90,0.4), 0 3px 8px rgba(0,0,0,0.1); }
-.tree-trunk { width: 8px; height: 22px; background: linear-gradient(180deg, #8d4a2c 0%, #5a2d1a 100%); margin: -5px auto 0; border-radius: 0 0 2px 2px; }
-.tree:nth-child(1) { left: 8%; }
-.tree:nth-child(2) { left: 82%; }
-.tree-tall .tree-crown { width: 75px; height: 75px; }
-
-.flower-bush { position: absolute; display: flex; z-index: 6; filter: drop-shadow(0 3px 4px rgba(0,0,0,0.15)); }
-.flower-bush span { display: inline-block; animation: flowerSway 3s ease-in-out infinite; }
-.flower-bush span:nth-child(2) { animation-delay: 0.3s; }
-@keyframes flowerSway { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
-.fb1 { bottom: 8%; left: 5%; font-size: 30px; }
-.fb2 { bottom: 6%; right: 5%; font-size: 34px; }
-
-.petals { position: absolute; inset: 0; pointer-events: none; }
-.petal { position: absolute; top: -30px; font-size: 18px; opacity: 0.85; animation: petalFall linear infinite; will-change: transform; }
-@keyframes petalFall {
-  0% { transform: translateY(-50px) rotate(0deg) translateX(0); opacity: 0; }
-  10% { opacity: 0.9; }
-  50% { transform: translateY(50vh) rotate(360deg) translateX(30px); }
-  90% { opacity: 0.9; }
-  100% { transform: translateY(110vh) rotate(720deg) translateX(-30px); opacity: 0; }
+function playTone(freq, duration, type = 'sine', volume = 0.18, delay = 0) {
+  const ctx = initAudio();
+  if (!ctx || !soundEnabled) return;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+  gain.gain.setValueAtTime(0, ctx.currentTime + delay);
+  gain.gain.linearRampToValueAtTime(volume, ctx.currentTime + delay + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + duration);
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.start(ctx.currentTime + delay);
+  osc.stop(ctx.currentTime + delay + duration);
 }
 
-/* ==========================================
-   GAME WRAPPER & NPC
-   ========================================== */
-.game-wrapper {
-  position: relative; z-index: 10; width: 100%; max-width: 1100px;
-  background: rgba(255,255,255,0.95); border-radius: 32px; padding: 38px;
-  box-shadow: 0 25px 70px rgba(255,193,7,0.25), 0 0 0 4px rgba(255,255,255,0.7), 0 0 0 8px rgba(255,224,102,0.4);
-  display: grid; grid-template-columns: 280px 1fr; gap: 38px; align-items: start;
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+function soundTaDa() { playTone(523.25, 0.12, 'square', 0.14, 0); playTone(659.25, 0.12, 'square', 0.14, 0.08); playTone(783.99, 0.35, 'square', 0.16, 0.16); playTone(1046.50, 0.35, 'sine', 0.18, 0.16); }
+function soundSparkle() { [1046.50, 1318.51, 1567.98, 2093.00].forEach((f, i) => playTone(f, 0.4, 'sine', 0.12, i * 0.06)); }
+function soundRising() { [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => { playTone(f, 0.15, 'sine', 0.18, i * 0.08); playTone(f * 2, 0.1, 'triangle', 0.05, i * 0.08); }); }
+function soundPopPop() { playTone(880, 0.08, 'sine', 0.2, 0); playTone(1108.73, 0.08, 'sine', 0.2, 0.1); playTone(1318.51, 0.2, 'sine', 0.22, 0.2); }
+function soundBell() { playTone(1568, 0.5, 'sine', 0.15, 0); playTone(2349, 0.4, 'sine', 0.08, 0.02); playTone(1046.50, 0.6, 'sine', 0.1, 0.05); }
+function soundFirework() { playTone(200, 0.1, 'sawtooth', 0.1, 0); playTone(400, 0.1, 'sawtooth', 0.1, 0.05); playTone(800, 0.1, 'sawtooth', 0.1, 0.1); playTone(1046.50, 0.3, 'sine', 0.18, 0.15); playTone(1318.51, 0.3, 'sine', 0.15, 0.17); playTone(1567.98, 0.4, 'sine', 0.12, 0.19); }
+
+function playRandomCorrectSound() { [soundTaDa, soundSparkle, soundRising, soundPopPop, soundBell][Math.floor(Math.random() * 5)](); }
+function playComboSound(streak) {
+  if (streak >= 5) { soundFirework(); setTimeout(() => soundSparkle(), 300); setTimeout(() => soundTaDa(), 600); } 
+  else if (streak >= 3) { soundFirework(); setTimeout(() => soundTaDa(), 400); } 
+  else { soundRising(); setTimeout(() => soundBell(), 300); }
+}
+function playWrongSound() { [392.00, 311.13, 233.08].forEach((freq, i) => playTone(freq, 0.22, 'triangle', 0.20, i * 0.12)); playTone(155.56, 0.35, 'sawtooth', 0.08, 0.36); }
+function playClickSound() { playTone(880, 0.06, 'sine', 0.12); }
+function playCompleteSound() {
+  const melody = [{ f: 523.25, d: 0.15 }, { f: 659.25, d: 0.15 }, { f: 783.99, d: 0.15 }, { f: 1046.50, d: 0.30 }, { f: 783.99, d: 0.12 }, { f: 1046.50, d: 0.40 }];
+  let time = 0;
+  melody.forEach(note => { playTone(note.f, note.d, 'sine', 0.22, time); playTone(note.f * 1.5, note.d, 'sine', 0.08, time); time += note.d * 0.85; });
+}
+function playEndFanfare() { [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50].forEach((f, i) => playTone(f, 0.12, 'sine', 0.18, i * 0.08)); }
+
+// ============================================
+// 🗣️ GIỌNG ĐỌC
+// ============================================
+let voicesLoaded = false;
+let vietnameseVoice = null;
+
+function loadVoices() {
+  if (!('speechSynthesis' in window)) return;
+  const voices = window.speechSynthesis.getVoices();
+  vietnameseVoice = voices.find(v => v.lang === 'vi-VN' || v.lang.startsWith('vi')) || voices.find(v => v.name.includes('Female') || v.name.includes('Google')) || voices[0];
+  voicesLoaded = true;
 }
 
-.npc-area { display: flex; flex-direction: column; align-items: center; gap: 18px; position: sticky; top: 20px; }
-.usagi-wrapper { width: 100%; display: flex; justify-content: center; filter: drop-shadow(0 15px 25px rgba(255,193,7,0.3)); }
-.usagi-svg { width: 250px; height: auto; animation: uBob 3.5s ease-in-out infinite; }
-@keyframes uBob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
-.usagi-svg .usagi-group ellipse[fill="#1A1A1A"] { transform-origin: center 135px; animation: blink 4s infinite; }
-@keyframes blink { 0%, 96%, 100% { transform: scaleY(1); } 98% { transform: scaleY(0.1); } }
-
-.speech-bubble {
-  background: linear-gradient(135deg, #ffffff 0%, #fff9c4 100%); border: 3px solid #FFE066;
-  border-radius: 22px; padding: 16px 22px; font-size: 15px; color: #8d6e00;
-  font-weight: 700; text-align: center; position: relative;
-  box-shadow: 0 10px 25px rgba(255,193,7,0.3); max-width: 250px; line-height: 1.45;
-}
-.speech-bubble::before { content: ''; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); border: 11px solid transparent; border-bottom-color: #FFE066; }
-.speech-bubble::after { content: ''; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); border: 8px solid transparent; border-bottom-color: #fff9c4; }
-
-.speaking-indicator { display: flex; gap: 5px; align-items: center; height: 20px; }
-.speaking-indicator span { width: 8px; height: 8px; background: #FFC107; border-radius: 50%; animation: speakPulse 1s ease-in-out infinite; }
-.speaking-indicator span:nth-child(2) { animation-delay: 0.15s; }
-.speaking-indicator span:nth-child(3) { animation-delay: 0.3s; }
-@keyframes speakPulse { 0%, 100% { transform: scale(0.7); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 1; } }
-
-/* ==========================================
-   QUIZ AREA
-   ========================================== */
-.quiz-area { display: flex; flex-direction: column; gap: 18px; }
-.header-bar { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 2px dashed #FFE066; gap: 15px; flex-wrap: wrap; }
-.header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-
-.title {
-  font-size: 22px; font-weight: 800;
-  background: linear-gradient(135deg, #ff8f00, #ffc107, #ff8f00);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text; letter-spacing: 1px; display: flex; align-items: center; gap: 8px; line-height: 1.3;
-}
-.title-icon { font-size: 24px; -webkit-text-fill-color: initial; }
-
-.score-box { background: linear-gradient(135deg, #ffc107, #ff8f00); color: #fff; padding: 10px 20px; border-radius: 22px; font-weight: 800; font-size: 15px; box-shadow: 0 6px 18px rgba(255,143,0,0.45), inset 0 -3px 0 rgba(0,0,0,0.1); display: flex; align-items: center; gap: 6px; }
-.score-icon { font-size: 16px; }
-
-.combo-box { background: linear-gradient(135deg, #ff6b35, #ff4d88, #ff80b3); background-size: 200% 200%; color: #fff; padding: 10px 18px; border-radius: 22px; font-weight: 800; font-size: 14px; box-shadow: 0 6px 20px rgba(255,77,136,0.6), inset 0 -3px 0 rgba(0,0,0,0.15); display: flex; align-items: center; gap: 5px; letter-spacing: 1px; animation: comboGlow 1.2s ease-in-out infinite, comboSlide 0.4s ease; }
-@keyframes comboGlow { 0%, 100% { background-position: 0% 50%; box-shadow: 0 6px 20px rgba(255,77,136,0.6), inset 0 -3px 0 rgba(0,0,0,0.15); } 50% { background-position: 100% 50%; box-shadow: 0 6px 30px rgba(255,77,136,0.9), inset 0 -3px 0 rgba(0,0,0,0.15); } }
-@keyframes comboSlide { from { transform: scale(0) rotate(-10deg); } to { transform: scale(1) rotate(0); } }
-
-.sound-btn, .voice-btn { background: linear-gradient(135deg, #fff9c4, #ffecb3); border: 2.5px solid #FFE066; color: #8d6e00; width: 46px; height: 46px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; box-shadow: 0 4px 12px rgba(255,193,7,0.25); font-family: inherit; }
-.sound-btn:hover, .voice-btn:hover { background: linear-gradient(135deg, #ffecb3, #FFE066); transform: translateY(-2px) scale(1.05); box-shadow: 0 6px 16px rgba(255,193,7,0.4); }
-.sound-btn.muted, .voice-btn.muted { opacity: 0.55; filter: grayscale(0.6); }
-
-.progress-wrap { display: flex; align-items: center; gap: 12px; }
-.progress-bar { flex: 1; height: 12px; background: #fff9c4; border-radius: 12px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(255,193,7,0.2); }
-.progress-fill { height: 100%; background: linear-gradient(90deg, #ffc107, #ff8f00); border-radius: 12px; width: 0%; transition: width 0.5s ease; box-shadow: 0 0 10px rgba(255,143,0,0.6); }
-.progress-text { font-size: 13px; font-weight: 700; color: #8d6e00; min-width: 55px; text-align: right; }
-
-.question-card { background: linear-gradient(160deg, #fff 0%, #fff9c4 100%); border-radius: 24px; padding: 30px; box-shadow: 0 10px 35px rgba(255,193,7,0.18), inset 0 0 0 2px rgba(255,224,102,0.5); min-height: 290px; display: flex; flex-direction: column; justify-content: center; }
-.question-type { display: inline-block; background: linear-gradient(135deg, #fff9c4, #ffecb3); color: #8d6e00; padding: 6px 16px; border-radius: 16px; font-size: 12px; font-weight: 800; margin-bottom: 16px; letter-spacing: 1px; align-self: flex-start; box-shadow: 0 3px 8px rgba(255,193,7,0.2); }
-.question-text { font-size: 21px; color: #4a1c33; font-weight: 700; line-height: 1.55; margin-bottom: 14px; }
-
-.speak-btn { align-self: flex-start; background: linear-gradient(135deg, #fff9c4, #ffecb3); border: 2px solid #FFE066; color: #8d6e00; padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.25s ease; margin-bottom: 22px; display: flex; align-items: center; gap: 6px; font-family: inherit; }
-.speak-btn:hover { background: linear-gradient(135deg, #ffecb3, #FFE066); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(255,193,7,0.3); }
-.speak-btn.speaking { background: linear-gradient(135deg, #ffc107, #ff8f00); color: #fff; border-color: #ff8f00; animation: speakPulse2 1s ease-in-out infinite; }
-@keyframes speakPulse2 { 0%, 100% { box-shadow: 0 4px 12px rgba(255,143,0,0.4); } 50% { box-shadow: 0 4px 20px rgba(255,143,0,0.8); } }
-
-.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.answer-btn { background: linear-gradient(135deg, #fff 0%, #fff9c4 100%); border: 2.5px solid #FFE066; color: #4a1c33; padding: 16px 18px; border-radius: 18px; font-size: 15px; font-weight: 700; cursor: pointer; transition: all 0.25s ease; text-align: left; display: flex; align-items: center; gap: 12px; font-family: inherit; }
-.answer-btn .letter { background: linear-gradient(135deg, #ffc107, #ff8f00); color: #fff; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; font-size: 14px; box-shadow: 0 3px 8px rgba(255,143,0,0.35); }
-.answer-btn:hover:not(:disabled) { background: linear-gradient(135deg, #ffecb3, #FFE066); transform: translateY(-3px); box-shadow: 0 10px 22px rgba(255,193,7,0.35); border-color: #ffc107; }
-.answer-btn:disabled { cursor: not-allowed; }
-.answer-btn.wrong-removed { opacity: 0.35; text-decoration: line-through; background: #f0f0f0; border-color: #ccc; color: #999; }
-.answer-btn.wrong-removed .letter { background: #bbb; box-shadow: none; }
-.answer-btn.correct { background: linear-gradient(135deg, #b8f3c1, #6ee787); border-color: #4caf50; color: #1b5e20; animation: pulse 0.6s ease; box-shadow: 0 8px 20px rgba(76,175,80,0.4); }
-.answer-btn.correct .letter { background: linear-gradient(135deg, #4caf50, #2e7d32); box-shadow: 0 3px 8px rgba(76,175,80,0.5); }
-@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
-
-.true-false-grid { grid-template-columns: 1fr 1fr; max-width: 500px; margin: 0 auto; width: 100%; }
-.feedback { text-align: center; font-weight: 800; font-size: 17px; min-height: 28px; transition: all 0.3s ease; letter-spacing: 0.3px; }
-.feedback.good { color: #4caf50; }
-.feedback.bad { color: #ff4d88; }
-
-.next-btn { align-self: center; background: linear-gradient(135deg, #ff8f00, #ffc107); color: #fff; border: none; padding: 15px 55px; border-radius: 32px; font-size: 16px; font-weight: 800; cursor: pointer; box-shadow: 0 10px 28px rgba(255,143,0,0.45); transition: all 0.3s ease; letter-spacing: 1px; font-family: inherit; }
-.next-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(255,143,0,0.6); }
-.next-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
-/* ==========================================
-   END SCREEN & RESPONSIVE
-   ========================================== */
-.end-screen { grid-column: 1 / -1; text-align: center; padding: 50px 30px; animation: fadeIn 0.5s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-.end-emoji { font-size: 70px; margin-bottom: 15px; animation: bounce 1.5s ease-in-out infinite; }
-@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-.end-title { font-size: 42px; background: linear-gradient(135deg, #ff8f00, #ffc107); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; font-weight: 800; letter-spacing: 2px; }
-.end-score { font-size: 22px; color: #8d6e00; margin-bottom: 35px; font-weight: 700; line-height: 1.6; }
-.restart-btn { background: linear-gradient(135deg, #ff8f00, #ffc107); color: #fff; border: none; padding: 16px 55px; border-radius: 32px; font-size: 17px; font-weight: 800; cursor: pointer; box-shadow: 0 10px 28px rgba(255,143,0,0.5); transition: all 0.3s ease; letter-spacing: 1px; font-family: inherit; }
-.restart-btn:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 35px rgba(255,143,0,0.65); }
-
-.hidden { display: none !important; }
-
-@media (max-width: 900px) {
-  .game-wrapper { grid-template-columns: 1fr; padding: 28px; gap: 28px; }
-  .npc-area { position: static; }
-  .usagi-svg { width: 190px; margin: -10px 0; }
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+  loadVoices();
+  setTimeout(loadVoices, 200);
 }
 
-@media (max-width: 600px) {
-  body { padding: 15px 10px; }
-  .game-wrapper { padding: 22px 18px; border-radius: 24px; }
-  .title { font-size: 18px; }
-  .question-text { font-size: 17px; }
-  .answers, .true-false-grid { grid-template-columns: 1fr; }
-  .answer-btn { padding: 14px 16px; font-size: 14px; }
-  .question-card { padding: 22px 18px; }
-  .end-title { font-size: 30px; }
-  .end-score { font-size: 18px; }
-  .next-btn, .restart-btn { padding: 14px 40px; font-size: 15px; }
-  .sun-wrap { top: 4%; right: 5%; }
-  .sun-core { width: 70px; height: 70px; }
-  .sun-rays { width: 160px; height: 160px; }
-  .sun-face { font-size: 18px; }
-  .sound-btn, .voice-btn { width: 40px; height: 40px; font-size: 17px; }
-  .combo-box { font-size: 12px; padding: 8px 14px; }
-  .flower-bush { font-size: 18px !important; }
+function speak(text, onEnd) {
+  if (!voiceEnabled || !('speechSynthesis' in window)) { if (onEnd) onEnd(); return; }
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  if (!voicesLoaded) loadVoices();
+  if (vietnameseVoice) utter.voice = vietnameseVoice;
+  utter.lang = 'vi-VN'; utter.rate = 0.95; utter.pitch = 1.6; utter.volume = 1.0;
+  currentVoice = utter;
+  utter.onstart = () => { $('speakingIndicator').classList.remove('hidden'); const sb = $('speakBtn'); if (sb) sb.classList.add('speaking'); };
+  utter.onend = utter.onerror = () => { $('speakingIndicator').classList.add('hidden'); const sb = $('speakBtn'); if (sb) sb.classList.remove('speaking'); currentVoice = null; if (onEnd) onEnd(); };
+  window.speechSynthesis.speak(utter);
 }
+
+function stopSpeaking() {
+  if ('speechSynthesis' in window) {
+    window.speechSynthesis.cancel();
+    $('speakingIndicator').classList.add('hidden');
+    const sb = $('speakBtn');
+    if (sb) sb.classList.remove('speaking');
+    currentVoice = null;
+  }
+}
+
+function readCurrentQuestion() {
+  const q = currentQuestions[currentQ];
+  if (!q) return;
+  let text = q.q;
+  if (q.type === 'mc') { shuffledOptions.forEach((opt, idx) => { text += `. Đáp án ${String.fromCharCode(65 + idx)}: ${opt}`; }); } 
+  else { text += '. Bạn chọn Đúng hay Sai?'; }
+  speak(text);
+}
+
+// ====== TOGGLE ======
+function toggleSound() {
+  soundEnabled = !soundEnabled;
+  const btn = $('soundBtn');
+  if (btn) { btn.textContent = soundEnabled ? '🔊' : '🔇'; btn.classList.toggle('muted', !soundEnabled); }
+  if (soundEnabled) playClickSound();
+  try { localStorage.setItem('usagiSound', soundEnabled ? '1' : '0'); } catch (e) {}
+}
+
+function toggleVoice() {
+  voiceEnabled = !voiceEnabled;
+  const btn = $('voiceBtn');
+  if (btn) { btn.textContent = voiceEnabled ? '🗣️' : '🚫'; btn.classList.toggle('muted', !voiceEnabled); }
+  if (!voiceEnabled) stopSpeaking(); else readCurrentQuestion();
+  try { localStorage.setItem('usagiVoice', voiceEnabled ? '1' : '0'); } catch (e) {}
+}
+
+// ====== TIỆN ÍCH ======
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function randomFrom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function createPetals() {
+  const container = $('petals');
+  if (!container) return;
+  container.innerHTML = '';
+  const emojis = ['🌸', '💮', '🌼', '🌻'];
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    p.style.left = Math.random() * 100 + '%';
+    p.style.fontSize = (12 + Math.random() * 14) + 'px';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * 12) + 's';
+    p.style.opacity = 0.6 + Math.random() * 0.4;
+    container.appendChild(p);
+  }
+}
+
+function updateComboUI() {
+  const box = $('comboBox');
+  if (!box) return;
+  if (comboStreak >= 2) {
+    box.classList.remove('hidden');
+    $('comboCount').textContent = comboStreak;
+    box.style.animation = 'none'; void box.offsetWidth;
+    box.style.animation = 'comboGlow 1.2s ease-in-out infinite, comboSlide 0.4s ease';
+  } else { box.classList.add('hidden'); }
+}
+
+// ====== GAME ======
+function startGame() {
+  currentQuestions = shuffle(QUESTIONS);
+  currentQ = 0;
+  score = 0;
+  comboStreak = 0;
+  $('score').textContent = '0';
+  updateComboUI();
+  $('endScreen').classList.add('hidden');
+  $('quizArea').classList.remove('hidden');
+  document.querySelector('.npc-area').classList.remove('hidden');
+  loadQuestion();
+}
+
+function loadQuestion() {
+  answered = false;
+  stopSpeaking();
+  const q = currentQuestions[currentQ];
+
+  const indexed = q.options.map((text, i) => ({ text, isCorrect: i === q.correct }));
+  const shuffled = shuffle(indexed);
+  shuffledOptions = shuffled.map(o => o.text);
+  correctIndexShuffled = shuffled.findIndex(o => o.isCorrect);
+
+  $('qType').textContent = q.type === 'mc' ? 'TRẮC NGHIỆM' : 'ĐÚNG / SAI';
+  $('qText').textContent = q.q;
+  $('feedback').textContent = '';
+  $('feedback').className = 'feedback';
+  $('nextBtn').disabled = true;
+  $('nextBtn').textContent = currentQ === currentQuestions.length - 1 ? 'Xem kết quả 🎉' : 'Câu tiếp theo →';
+
+  const pct = (currentQ / currentQuestions.length) * 100;
+  $('progressFill').style.width = pct + '%';
+  $('progressText').textContent = (currentQ + 1) + ' / ' + currentQuestions.length;
+
+  const lines = [
+    'Ura! Bạn trả lời được không nào? 🤔', 'Câu này dễ lắm đó nha! 💕', 'Suy nghĩ kỹ trước khi chọn nhé~ 🌸', 'Cố lên bạn yêu! 🎀', 'Mình tin bạn làm được! ✨',
+  ];
+  $('speech').textContent = lines[currentQ % lines.length];
+
+  const answersDiv = $('answers');
+  answersDiv.innerHTML = '';
+  answersDiv.className = 'answers' + (q.type === 'tf' ? ' true-false-grid' : '');
+
+  shuffledOptions.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    const letter = q.type === 'tf' ? (opt === 'Đúng' ? '✓' : '✗') : String.fromCharCode(65 + idx);
+    btn.innerHTML = `<span class="letter">${letter}</span><span>${opt}</span>`;
+    btn.onclick = () => handleAnswer(idx, btn);
+    answersDiv.appendChild(btn);
+  });
+
+  setTimeout(() => readCurrentQuestion(), 400);
+}
+
+function handleAnswer(idx, btn) {
+  if (answered) return;
+  const feedback = $('feedback');
+  initAudio();
+
+  if (idx === correctIndexShuffled) {
+    answered = true;
+    score += 10;
+    comboStreak++;
+
+    let bonus = 0;
+    if (comboStreak >= 5) bonus = 10;
+    else if (comboStreak >= 3) bonus = 5;
+    else if (comboStreak >= 2) bonus = 2;
+    score += bonus;
+
+    $('score').textContent = score;
+    btn.classList.add('correct');
+
+    let praiseText, voiceText;
+    if (comboStreak >= 2) {
+      const comboKey = comboStreak >= 10 ? 10 : comboStreak;
+      const comboPraise = COMBO_PHRASES[comboKey] || COMBO_PHRASES[10];
+      praiseText = randomFrom(comboPraise);
+      voiceText = praiseText;
+      feedback.textContent = `🔥 ${praiseText} +${10 + bonus} điểm`;
+      setTimeout(() => playComboSound(comboStreak), 150);
+    } else {
+      praiseText = randomFrom(PRAISE_PHRASES);
+      voiceText = praiseText;
+      feedback.textContent = `🎉 ${praiseText} +10 điểm`;
+      playRandomCorrectSound();
+    }
+    feedback.className = 'feedback good';
+    stopSpeaking();
+    $('speech').textContent = praiseText;
+    updateComboUI();
+    if (voiceEnabled) setTimeout(() => speak(voiceText), 500);
+    $('nextBtn').disabled = false;
+  } else {
+    comboStreak = 0;
+    updateComboUI();
+    btn.classList.add('wrong-removed');
+    btn.disabled = true;
+
+    const encourage = randomFrom(ENCOURAGE_PHRASES);
+    feedback.textContent = `❌ ${encourage}`;
+    feedback.className = 'feedback bad';
+    stopSpeaking();
+    $('speech').textContent = encourage;
+    playWrongSound();
+    if (voiceEnabled) setTimeout(() => speak(encourage), 500);
+  }
+}
+
+$('nextBtn').onclick = () => {
+  playClickSound();
+  stopSpeaking();
+  currentQ++;
+  if (currentQ >= currentQuestions.length) showEnd();
+  else loadQuestion();
+};
+
+function showEnd() {
+  stopSpeaking();
+  $('quizArea').classList.add('hidden');
+  document.querySelector('.npc-area').classList.add('hidden');
+  $('endScreen').classList.remove('hidden');
+
+  let maxScore = 0;
+  let tempStreak = 0;
+  for (let i = 0; i < currentQuestions.length; i++) {
+    tempStreak++;
+    maxScore += 10;
+    if (tempStreak >= 5) maxScore += 10;
+    else if (tempStreak >= 3) maxScore += 5;
+    else if (tempStreak >= 2) maxScore += 2;
+  }
+
+  let rank = '🌸 Cố gắng lên nhé!';
+  let voiceText = 'Hoàn thành rồi! Cố gắng lên nhé!';
+  if (score >= maxScore * 0.8) { 
+    rank = '👑 Xuất sắc! Bạn thật bá khí!'; 
+    voiceText = 'Xuất sắc! Bạn thật bá khí!'; 
+  } 
+  else if (score >= maxScore * 0.5) { 
+    rank = '💖 Khá tốt! Tiếp tục cố gắng!'; 
+    voiceText = 'Khá tốt! Tiếp tục cố gắng nhé!'; 
+  }
+
+  $('finalScore').innerHTML = `Bạn đạt <strong>${score}</strong> / ${maxScore} điểm<br><span style="font-size:17px;color:#ff8f00;margin-top:12px;display:block">${rank}</span>`;
+
+  setTimeout(() => { if (score >= maxScore * 0.5) playCompleteSound(); else playEndFanfare(); }, 300);
+  if (voiceEnabled) setTimeout(() => speak(`${voiceText} Bạn được ${score} trên ${maxScore} điểm.`), 1500);
+}
+
+function restartGame() {
+  playClickSound();
+  stopSpeaking();
+  $('endScreen').classList.add('hidden');
+  $('quizArea').classList.remove('hidden');
+  document.querySelector('.npc-area').classList.remove('hidden');
+  startGame();
+}
+
+$('speakBtn').onclick = () => {
+  if (currentVoice) stopSpeaking();
+  else readCurrentQuestion();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    if (localStorage.getItem('usagiSound') === '0') { soundEnabled = false; const btn = $('soundBtn'); if (btn) { btn.textContent = '🔇'; btn.classList.add('muted'); } }
+    if (localStorage.getItem('usagiVoice') === '0') { voiceEnabled = false; const btn = $('voiceBtn'); if (btn) { btn.textContent = '🚫'; btn.classList.add('muted'); } }
+  } catch (e) {}
+
+  $('soundBtn').addEventListener('click', toggleSound);
+  $('voiceBtn').addEventListener('click', toggleVoice);
+
+  createPetals();
+  startGame();
+
+  document.body.addEventListener('click', initAudio, { once: true });
+  document.body.addEventListener('touchstart', initAudio, { once: true });
+
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && 'speechSynthesis' in window) loadVoices();
+  });
+});
