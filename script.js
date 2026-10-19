@@ -1,31 +1,181 @@
-// ====== 20 CÂU HỎI: CHỦ ĐỀ 3 - RÈN LUYỆN BẢN THÂN (HĐTN 10 - KNTT) ======
+// ====== 20 CÂU HỎI NÂNG CAO: CHỦ ĐỀ 3 - RÈN LUYỆN BẢN THÂN (HĐTN 10 - KNTT) ======
 const QUESTIONS = [
-  // Trắc nghiệm 4 đáp án (10 câu)
-  { type: 'mc', q: 'Khi nhận phản hồi về bài làm của mình, học sinh nên có thái độ như thế nào để rèn luyện bản thân hiệu quả?', options: ['Tiếp nhận cởi mở, xem đó là cơ hội học hỏi', 'Phớt lờ góp ý tiêu cực', 'Biện minh cho lỗi sai', 'So sánh để tìm ai tốt hơn'], correct: 0 },
-  { type: 'mc', q: 'Kỹ năng tự đánh giá trong rèn luyện bản thân có nghĩa là gì?', options: ['Nhận thức điểm mạnh, điểm yếu một cách khách quan', 'Luôn cho rằng mình đúng', 'Chỉ tập trung vào lỗi sai', 'Chờ người khác đánh giá'], correct: 0 },
-  { type: 'mc', q: 'Yếu tố nào là nền tảng quan trọng nhất để xây dựng sự tự tin và đối mặt thử thách?', options: ['Hiểu rõ điểm mạnh, điểm yếu và giá trị bản thân', 'Giao tiếp hiệu quả', 'Thái độ lạc quan', 'Quản lý thời gian'], correct: 0 },
-  { type: 'mc', q: 'Học sinh thường xuyên trì hoãn việc học. Bước đầu tiên để khắc phục là gì?', options: ['Xác định nguyên nhân gốc rễ của hành vi trì hoãn', 'Tìm bạn cùng làm bài', 'Lập thời gian biểu cố định', 'Xin giáo viên giảm bài tập'], correct: 0 },
-  { type: 'mc', q: 'Việc xây dựng thói quen tích cực có ý nghĩa gì trong rèn luyện bản thân?', options: ['Giúp đạt mục tiêu bền vững và cải thiện chất lượng cuộc sống', 'Chỉ có lợi ích ngắn hạn', 'Gây áp lực không cần thiết', 'Làm tăng sự lười biếng'], correct: 0 },
-  { type: 'mc', q: 'Khi đối mặt với thất bại, cách ứng xử nào sau đây thể hiện sự trưởng thành?', options: ['Rút kinh nghiệm và tiếp tục cố gắng', 'Đổ lỗi cho hoàn cảnh', 'Từ bỏ mục tiêu', 'So bì với người khác'], correct: 0 },
-  { type: 'mc', q: 'Để quản lý cảm xúc tiêu cực hiệu quả, học sinh nên làm gì?', options: ['Nhận diện cảm xúc và tìm cách giải tỏa lành mạnh', 'Kìm nén hoàn toàn cảm xúc', 'Bộc phát cảm xúc bừa bãi', 'Phớt lờ cảm xúc của bản thân'], correct: 0 },
-  { type: 'mc', q: 'Mục tiêu SMART trong rèn luyện bản thân bao gồm những yếu tố nào?', options: ['Cụ thể, đo lường được, khả thi, thực tế, có thời hạn', 'Chung chung, mơ hồ', 'Chỉ cần khó và thử thách', 'Không cần thời hạn'], correct: 0 },
-  { type: 'mc', q: 'Hành động nào thể hiện sự tôn trọng bản thân?', options: ['Chăm sóc sức khỏe thể chất và tinh thần', 'Bỏ bê bản thân vì người khác', 'Chấp nhận mọi yêu cầu vô lý', 'So sánh bản thân với người khác'], correct: 0 },
-  { type: 'mc', q: 'Kỹ năng giao tiếp hiệu quả đóng vai trò gì trong rèn luyện bản thân?', options: ['Giúp xây dựng mối quan hệ tốt và giải quyết xung đột', 'Chỉ cần khi làm việc nhóm', 'Không quan trọng bằng kỹ năng cứng', 'Gây mất thời gian'], correct: 0 },
+  // Trắc nghiệm 4 đáp án (10 câu - Phân tích & Vận dụng)
+  { 
+    type: 'mc', 
+    q: 'Phản hồi mang tính xây dựng khác với lời chỉ trích ở điểm cốt lõi nào?', 
+    options: [
+      'Tập trung vào hành vi cụ thể và đưa ra giải pháp cải thiện', 
+      'Luôn khen ngợi để tránh làm tổn thương người khác', 
+      'Chỉ ra lỗi sai mà không cần giải thích lý do', 
+      'Đưa ra nhận xét chung chung về tính cách con người'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Theo nguyên tắc SMART, một mục tiêu được đánh giá là "Khả thi" (Achievable) khi nào?', 
+    options: [
+      'Khi mục tiêu đó phù hợp với nguồn lực và năng lực hiện có của bản thân', 
+      'Khi mục tiêu đó do người khác áp đặt và yêu cầu phải hoàn thành', 
+      'Khi mục tiêu đó mang tính thử thách cực cao, bất chấp khó khăn', 
+      'Khi mục tiêu đó không giới hạn thời gian thực hiện'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Hiện tượng "trì hoãn" (procrastination) thường xuất phát sâu xa từ nguyên nhân tâm lý nào?', 
+    options: [
+      'Nỗi sợ thất bại hoặc sự lo lắng quá mức về kết quả', 
+      'Sự thiếu hiểu biết về kiến thức chuyên môn', 
+      'Thói quen thích làm việc vào ban đêm', 
+      'Do thiếu dụng cụ học tập hỗ trợ'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Trong mô hình "Cửa sổ Johari", vùng "Mù" (Blind Spot) đại diện cho điều gì?', 
+    options: [
+      'Những đặc điểm về bản thân mà người khác thấy nhưng chính ta không nhận ra', 
+      'Những điều cả bản thân và người khác đều không biết', 
+      'Những điều ta biết rõ về bản thân và công khai với mọi người', 
+      'Những bí mật cá nhân ta giấu kín trong lòng'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Để chuyển hóa cảm xúc tiêu cực một cách hiệu quả, phương pháp "tái cấu trúc nhận thức" (Cognitive Reframing) yêu cầu học sinh làm gì?', 
+    options: [
+      'Thay đổi cách nhìn nhận vấn đề theo hướng tích cực và khách quan hơn', 
+      'Dồn nén cảm xúc đó vào sâu bên trong', 
+      'Tìm cách đổ lỗi cho hoàn cảnh bên ngoài', 
+      'Tránh né hoàn toàn các tình huống gây ra cảm xúc đó'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Hành vi nào sau đây thể hiện sự "lệch chuẩn" trong kỹ năng tự đánh giá bản thân?', 
+    options: [
+      'Phóng đại điểm mạnh và phủ nhận hoàn toàn điểm yếu của bản thân', 
+      'Xin ý kiến nhận xét từ thầy cô để đối chiếu', 
+      'Ghi chép lại các lỗi sai để rút kinh nghiệm', 
+      'Đặt mục tiêu nhỏ và tăng dần độ khó'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Theo nghiên cứu tâm lý, để nuôi dưỡng một thói quen mới bền vững, một người cần duy trì sự kiên trì trong khoảng thời gian trung bình là bao lâu?', 
+    options: [
+      'Khoảng 66 ngày (từ 2 đến 8 tháng tùy độ phức tạp)', 
+      'Chỉ cần 3 ngày liên tục', 
+      'Đúng 21 ngày theo mọi trường hợp', 
+      'Trong vòng 1 tuần là đủ'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Khi đối mặt với một xung đột quan điểm trong nhóm học tập, chiến lược nào sau đây thể hiện sự trưởng thành về mặt cảm xúc?', 
+    options: [
+      'Lắng nghe, tìm điểm chung và thương lượng để cùng có lợi', 
+      'Bảo vệ quan điểm của mình bằng mọi giá', 
+      'Im lặng và làm theo ý người khác để tránh cãi vã', 
+      'Rời khỏi nhóm và làm việc một mình'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Khái niệm "Lòng tự trọng lành mạnh" (Healthy Self-esteem) được thể hiện rõ nhất qua hành vi nào?', 
+    options: [
+      'Chấp nhận bản thân có khuyết điểm nhưng vẫn nỗ lực phát triển', 
+      'Luôn cho rằng mình giỏi hơn người khác', 
+      'Phụ thuộc hoàn toàn vào lời khen của người xung quanh', 
+      'Tự cô lập bản thân để không bị ảnh hưởng'
+    ], 
+    correct: 0 
+  },
+  { 
+    type: 'mc', 
+    q: 'Yếu tố then chốt giúp học sinh lớp 10 quản lý thời gian hiệu quả giữa học tập và ngoại khóa là gì?', 
+    options: [
+      'Xác định rõ ưu tiên và phân bổ thời gian theo ma trận khẩn cấp/quan trọng', 
+      'Dành toàn bộ thời gian cho việc học, cắt bỏ ngoại khóa', 
+      'Làm việc ngẫu hứng tùy theo cảm xúc từng ngày', 
+      'Chỉ tập trung làm các việc dễ trước'
+    ], 
+    correct: 0 
+  },
 
-  // Đúng / Sai (10 câu)
-  { type: 'tf', q: 'Học sinh nên phớt lờ hoàn toàn những lời góp ý tiêu cực từ người khác.', options: ['Đúng', 'Sai'], correct: 1 },
-  { type: 'tf', q: 'Tự đánh giá bản thân cần dựa trên cả điểm mạnh và điểm yếu một cách khách quan.', options: ['Đúng', 'Sai'], correct: 0 },
-  { type: 'tf', q: 'Trì hoãn là thói quen tốt giúp giảm căng thẳng trước khi làm việc.', options: ['Đúng', 'Sai'], correct: 1 },
-  { type: 'tf', q: 'Việc chấp nhận sự không hoàn hảo của bản thân là một phần của rèn luyện lòng tự trọng.', options: ['Đúng', 'Sai'], correct: 0 },
-  { type: 'tf', q: 'Xây dựng thói quen tích cực chỉ mang lại lợi ích trong ngắn hạn.', options: ['Đúng', 'Sai'], correct: 1 },
-  { type: 'tf', q: 'Kỹ năng quản lý thời gian giúp giảm căng thẳng và tăng hiệu suất học tập.', options: ['Đúng', 'Sai'], correct: 0 },
-  { type: 'tf', q: 'Thất bại là dấu hiệu cho thấy bản thân không có năng lực.', options: ['Đúng', 'Sai'], correct: 1 },
-  { type: 'tf', q: 'Đặt mục tiêu quá cao so với khả năng là cách tốt để rèn luyện bản thân.', options: ['Đúng', 'Sai'], correct: 1 },
-  { type: 'tf', q: 'Việc lắng nghe người khác giúp mở rộng hiểu biết và cải thiện bản thân.', options: ['Đúng', 'Sai'], correct: 0 },
-  { type: 'tf', q: 'Rèn luyện bản thân là quá trình diễn ra suốt đời, không chỉ trong một giai đoạn.', options: ['Đúng', 'Sai'], correct: 0 },
+  // Đúng / Sai (10 câu - Phân tích & Đánh giá)
+  { 
+    type: 'tf', 
+    q: 'Việc kìm nén hoàn toàn cảm xúc tiêu cực luôn là cách quản lý cảm xúc tốt nhất.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Khi tự đánh giá, việc so sánh bản thân với người khác giỏi hơn chỉ mang lại động lực, không bao giờ gây ra tác dụng phụ tiêu cực.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Để nhận được phản hồi có chất lượng, bản thân cần đặt câu hỏi cụ thể thay vì chờ người khác đánh giá chung chung.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 0 
+  },
+  { 
+    type: 'tf', 
+    q: 'Việc thất bại là một trải nghiệm cần thiết để học sinh THPT đánh thức tư duy phản biện và bài học kinh nghiệm.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 0 
+  },
+  { 
+    type: 'tf', 
+    q: 'Một mục tiêu không có thời hạn cụ thể sẽ giúp giảm áp lực và tăng hiệu quả rèn luyện bản thân.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Chỉ những người có điểm số thấp mới cần đến kỹ năng tự đánh giá bản thân, người có điểm cao không cần.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Xây dựng thói quen tích cực nên bắt đầu bằng những hành động nhỏ, dễ thực hiện và tăng dần theo thời gian.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 0 
+  },
+  { 
+    type: 'tf', 
+    q: 'Kỹ năng giao tiếp hiệu quả chỉ bao gồm việc nói lưu loát, không cần chú trọng đến việc lắng nghe.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Chấp nhận sự không hoàn hảo của bản thân là biểu hiện của sự yếu đuối và thiếu nỗ lực phấn đấu.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 1 
+  },
+  { 
+    type: 'tf', 
+    q: 'Trong quá trình rèn luyện bản thân, việc lùi lại một bước để nhìn nhận lại mục tiêu được xem là một chiến lược thông minh.', 
+    options: ['Đúng', 'Sai'], 
+    correct: 0 
+  },
 ];
 
-// ====== CÂU KHEN (Cập nhật theo yêu cầu) ======
+// ====== CÂU KHEN ======
 const PRAISE_PHRASES = [
   'Ơ kìa, cũng không tệ đâu nhỉ!',
   'Đúng rồi, nhưng đừng tự mãn nha!',
@@ -42,8 +192,13 @@ const PRAISE_PHRASES = [
 const COMBO_PHRASES = {
   2: ['Bạn thật bá đạo!', 'Bá đạo thật sự!', 'Bạn thật bá đạo đó nha!'],
   3: ['Bá khí trên từng hạt bí!', 'Bá khí trên từng hạt bí!', 'BÁ KHÍ TRÊN TỪNG HẠT BÍ!!!'],
-  4: ['Combo 4! Siêu nhân xuất hiện!', 'Bốn câu rồi! Thiên tài!'],
-  5: ['Combo 5! Bạn là huyền thoại!', 'Năm câu liên tiếp! Vô đối!'],
+  4: ['Combo 4! Đỉnh cao muôn thuở!', 'Bốn câu liên tiếp! Siêu sao là đây!', 'Combo 4! Bất khả chiến bại!'],
+  5: ['Combo 5! Bạn là huyền thoại!', 'Năm câu liên tiếp! Vô đối!', 'Combo 5! Không gì cản nổi!'],
+  6: ['Combo 6! Não bạn là siêu máy tính hả?', 'Sáu câu rồi! Xin vía!', 'Combo 6! Bạn chơi game như thánh!'],
+  7: ['Combo 7! Hạt bí nổ tung rồi!', 'Bảy câu! Bá khí ngút trời!', 'Combo 7! Thần thánh phương nào đây?'],
+  8: ['Combo 8! Admin đang xem bạn kìa!', 'Tám câu rồi! Bịp thật sự!', 'Combo 8! Vô địch thiên hạ!'],
+  9: ['Combo 9! Bạn là nỗi ác mộng của câu hỏi!', 'Chín câu! Không còn gì để nói!', 'Combo 9! Siêu bá khí!'],
+  10: ['Combo 10! Bạn hack game à?', 'Mười câu! Huyền thoại sống!', 'COMBO 10! QUÁ BÁ KHÍ!'],
 };
 
 const ENCOURAGE_PHRASES = [
@@ -301,8 +456,8 @@ function handleAnswer(idx, btn) {
 
     let praiseText, voiceText;
     if (comboStreak >= 2) {
-      const comboKey = Math.min(comboStreak, 5);
-      const comboPraise = COMBO_PHRASES[comboKey] || COMBO_PHRASES[5];
+      const comboKey = comboStreak >= 10 ? 10 : comboStreak;
+      const comboPraise = COMBO_PHRASES[comboKey] || COMBO_PHRASES[10];
       praiseText = randomFrom(comboPraise);
       voiceText = praiseText;
       feedback.textContent = `🔥 ${praiseText} +${10 + bonus} điểm`;
@@ -349,7 +504,6 @@ function showEnd() {
   document.querySelector('.npc-area').classList.add('hidden');
   $('endScreen').classList.remove('hidden');
 
-  // Tính điểm tối đa thực tế (bao gồm điểm thưởng combo)
   let maxScore = 0;
   let tempStreak = 0;
   for (let i = 0; i < currentQuestions.length; i++) {
